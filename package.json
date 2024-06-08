@@ -1,0 +1,19 @@
+{
+  "name": "websockets",
+  "type": "module",
+  "scripts": {
+    "start": "node ./server.js",
+    "dev": "nodemon ./server.js"
+  },
+  "keywords": [],
+  "author": "Svitlana Miroshnychenko <rex141rex@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "path": "^0.12.7",
+    "ws": "^8.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.3"
+  }
+}
