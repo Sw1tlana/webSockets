@@ -13,7 +13,7 @@ formElement.addEventListener("submit", (event) => {
         return;
     }
  
-    writLine(`${nickname} : ${message}`);
+    socket.send(JSON.stringify({ nickname, message }));
 
     formElement.reset();
 });
@@ -22,4 +22,8 @@ function writLine(text) {
    const line = document.createElement("p");
     line.innerText = text;
     messagesElement.appendChild(line);
+};
+
+socket.onmessage = event => {
+    writLine(event.data);
 }

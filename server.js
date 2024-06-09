@@ -27,6 +27,25 @@ wss.on("connection", (ws) => {
             client.send("New user connected!");
         }
     }
+    ws.on("message", (event) => {
+        const data = JSON.parse(event.toString("utf-8"));
+       
+        for (const client of clients) {
+              if (client === ws) {
+            client.send(`You: ${data.message}`);
+        } else {
+            client.send(`${data.nickname} : ${data.message}`);
+        }
+        }
+    });
+
+    ws.on("close", () => {
+       for (const client of clients) {
+              if (client !== ws) {
+            client.send('User disconnected!');
+        } 
+        }  
+    })
 });
 
 
